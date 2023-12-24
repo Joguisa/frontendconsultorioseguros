@@ -1,1 +1,44 @@
-<p>list-client works!</p>
+<app-loading *ngIf="isLoading"></app-loading>
+<div class="container w-full h-full" *ngIf="!isLoading">
+    <app-header></app-header>
+    <div class="d-flex flex-wrap justify-content-center align-content-between p-3 mt-5">
+        <div class="col-12">
+            <div class="container alig-items-center my-2">
+                <h1  class="text-center">Consultorio de Seguros</h1>
+                <hr>
+            </div>
+            <div class="row">
+                <div class="d-flex justify-content-end align-items-end mt-2 mt-md-0">
+                    <button type="button" class="btn btn-primary" (click)="goToAddPage()">Agregar</button>&nbsp;
+                    <button type="button" class="btn btn-secondary" (click)="saveListClient()">Cargar Data</button>
+                </div>
+            </div>
+            <table class=" table table-striped table-hover" aria-label="List of clients">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Cédula</th>
+                        <th scope="col">Nombre Completo</th>
+                        <th scope="col">Telefono</th>
+                        <th scope="col">Edad</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let client of clients; let i = index">
+                        <th scope="row">{{client.clienteId}}</th>
+                        <td>{{client.cedula}}</td>
+                        <td>{{client.nombreCliente}}</td>
+                        <td>{{client.telefono}}</td>
+                        <td>{{client.edad}}</td>
+                        <td>
+                            <i class="bi bi-pencil-square px-2 text-formsPrimary cursor-pointer" (click)="goToEditPage(client.clienteId)"></i>
+                            <i class="bi bi-trash px-2 text-formsPrimary cursor-pointer" (click)="deleteClient(client.clienteId)"></i>                            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>

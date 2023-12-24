@@ -15,4 +15,25 @@ export class UtilsShared {
     const regex = /^\d+$/;
     return regex.test(event.key);
   }
+
+  /**
+   * Valida que solo se ingresen letras en el campo
+   * @param event 
+   * @returns 
+   */
+  onlyLetters(event: KeyboardEvent): boolean {
+    const key = event.key;
+    // Verifica si la tecla es una letra, espacio o caracteres específicos
+    if (
+      (key >= 'a' && key <= 'z') ||
+      (key >= 'A' && key <= 'Z') ||
+      key === ' ' ||
+      (key >= 'À' && key <= 'Ö') ||
+      (key >= 'Ø' && key <= 'ö') ||
+      (key >= 'ø' && key <= 'ÿ')
+    ) {
+      return true;
+    }
+    return false;
+  }
 }

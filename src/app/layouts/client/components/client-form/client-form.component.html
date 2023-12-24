@@ -1,1 +1,63 @@
-<p>client-form works!</p>
+<form [formGroup]="clientForm" autocomplete="off">
+    <div class="w-full d-flex flex-column flex-md-row justify-content-around align-items-start ">
+        <div class="row p-2 w-full bg-white rounded-3 m-2 comboContainer">
+            <!--IDENTIFICACIÓN-->
+            <div class="col-12 col-md-6  rounded-pill mb-3">
+                <label class="text-capitalize my-1 fw-700">Identificación</label>
+                <input (input)="onInputValid($event,'cedula')" [maxLength]="10" type="text" formControlName="cedula" required class="form-control"
+                    placeholder="Identificación*" (keypress)="onKeyPressOnlyNumbers($event)"
+                    [ngClass]="{ 'is-invalid':  clientForm.get('cedula')?.invalid && clientForm.get('cedula')?.touched }">
+                <div class="invalid-feedback"
+                    *ngIf="clientForm.get('cedula')?.hasError('required') && clientForm.get('cedula')?.touched">
+                    ¡Campo
+                    Obligatorio!.</div>
+                <div class="invalid-feedback"
+                    *ngIf="clientForm.get('cedula')?.hasError('pattern') && clientForm.get('cedula')?.touched">
+                    ¡Solo se permite ingresar números!.</div>
+            </div>
+
+            <!-- NOMBRES -->
+            <div class="col-12 col-md-6 rounded-pill mb-3">
+                <label class="text-capitalize my-1 fw-700">Nombres Completos</label>
+                <input (input)="onInputValid($event,'nombreCliente')" [maxLength]="50" id="us" [maxlength]="100" formControlName="nombreCliente" type="text"
+                    class="form-control" placeholder="Nombres*" (keypress)="onKeyPressOnlyLetters($event)"
+                    [ngClass]="{ 'is-invalid': clientForm.get('nombreCliente')?.invalid && clientForm.get('nombreCliente')?.touched} " />
+                <div class="invalid-feedback"
+                    *ngIf="clientForm.get('nombreCliente')?.hasError('required') && clientForm.get('nombreCliente')?.touched">
+                    ¡Campo Obligatorio!.</div>
+                <div class="invalid-feedback"
+                    *ngIf="clientForm.get('nombreCliente')?.hasError('pattern') && clientForm.get('nombreCliente')?.touched">
+                    ¡Solo se permite ingresar letras!.</div>
+            </div>
+
+            <!--TELEFONO-->
+            <div class="col-12 col-md-6  rounded-pill mb-3">
+                <label class="text-capitalize my-1 fw-700">Teléfono</label>
+                <input (input)="onInputValid($event,'telefono')" [maxLength]="10" type="text" formControlName="telefono" required class="form-control"
+                    placeholder="Teléfono*" (keypress)="onKeyPressOnlyNumbers($event)"
+                    [ngClass]="{ 'is-invalid':  clientForm.get('telefono')?.invalid && clientForm.get('telefono')?.touched }">
+                <div class="invalid-feedback"
+                    *ngIf="clientForm.get('telefono')?.hasError('required') && clientForm.get('telefono')?.touched">
+                    ¡Campo
+                    Obligatorio!.</div>
+                <div class="invalid-feedback"
+                    *ngIf="clientForm.get('telefono')?.hasError('pattern') && clientForm.get('telefono')?.touched">
+                    ¡Solo se permite ingresar números!.</div>
+            </div>
+
+            <!--EDAD-->
+            <div class="col-12 col-md-6  rounded-pill mb-3">
+                <label class="text-capitalize my-1 fw-700">Edad</label>
+                <input (input)="onInputValid($event,'edad')" [maxLength]="3" type="text" formControlName="edad" required class="form-control"
+                    placeholder="Edad*" (keypress)="onKeyPressOnlyNumbers($event)"
+                    [ngClass]="{ 'is-invalid':  clientForm.get('edad')?.invalid && clientForm.get('edad')?.touched }">
+                <div class="invalid-feedback"
+                    *ngIf="clientForm.get('edad')?.hasError('required') && clientForm.get('edad')?.touched">
+                    ¡Campo Obligatorio!.</div>
+                <div class="invalid-feedback"
+                    *ngIf="clientForm.get('edad')?.hasError('pattern') && clientForm.get('edad')?.touched">
+                    ¡Solo se permite ingresar números!.</div>
+            </div>
+        </div>
+    </div>
+</form>

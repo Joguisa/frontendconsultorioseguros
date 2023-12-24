@@ -1,1 +1,26 @@
-<p>add-client works!</p>
+<div class="w-full h-full">
+    <app-header></app-header>
+    <div class="row  mx-4">
+        <div class="col-12 h-full">
+            <div class="d-flex justify-content-center align-items-center p-3 mt-5 w-full">
+                <div class="container alig-items-center my-2">
+                    <h1 class="text-center">Agregar Cliente</h1>
+                    <hr>
+                </div>
+            </div>
+
+            <div class="row">
+                <div
+                    class="d-flex justify-content-center align-items-center col-12 col-md-12 mx-auto rounded-2  mt-1 mb-4">
+                    <app-client-form [validForm]="validClientForm" (validClientFormEvent)="setValidForm($event)"
+                        (clientFormEvent)="clientFormEvent($event)"></app-client-form>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center align-items-center mt-2 mt-md-0">
+                <button type="button" class="btn btn-formsCancel" (click)="goToListPage()">Cancelar</button>&nbsp;
+                <button type="button" class="btn btn-formsPrimary" (click)="saveClient()">Guardar</button>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>
