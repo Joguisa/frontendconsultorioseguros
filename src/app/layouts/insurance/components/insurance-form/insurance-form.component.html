@@ -1,1 +1,59 @@
-<p>insurance-form works!</p>
+<form [formGroup]="insuranceForm" autocomplete="off">
+    <div class="w-full d-flex flex-column flex-md-row justify-content-around align-items-start ">
+        <div class="row p-2 w-full bg-white rounded-3 m-2 comboContainer">
+            <!-- NOMBRE SEGURO -->
+            <div class="col-12 col-md-6 rounded-pill mb-3">
+                <label class="text-capitalize my-1 fw-700">Nombre Seguro</label>
+                <input (input)="onInputValid($event,'nombreSeguro')" [maxLength]="50" id="us" [maxlength]="100" formControlName="nombreSeguro" type="text"
+                    class="form-control" placeholder="Nombre Seguro*" (keypress)="onKeyPressOnlyLetters($event)"
+                    [ngClass]="{ 'is-invalid': insuranceForm.get('nombreSeguro')?.invalid && insuranceForm.get('nombreSeguro')?.touched} " />
+                <div class="invalid-feedback"
+                    *ngIf="insuranceForm.get('nombreSeguro')?.hasError('required') && insuranceForm.get('nombreSeguro')?.touched">
+                    ¡Campo Obligatorio!.</div>
+                <div class="invalid-feedback"
+                    *ngIf="insuranceForm.get('nombreSeguro')?.hasError('pattern') && insuranceForm.get('nombreSeguro')?.touched">
+                    ¡Solo se permite ingresar letras!.</div>
+            </div>
+
+            <!-- CODIGO SEGURO -->
+            <div class="col-12 col-md-6 rounded-pill mb-3">
+                <label class="text-capitalize my-1 fw-700">Código Seguro</label>
+                <input (input)="onInputValid($event,'codigoSeguro')" [maxLength]="10" id="us" [maxlength]="100" formControlName="codigoSeguro" type="text"
+                    class="form-control" placeholder="Código Seguro*"
+                    [ngClass]="{ 'is-invalid': insuranceForm.get('codigoSeguro')?.invalid && insuranceForm.get('codigoSeguro')?.touched} " />
+                <div class="invalid-feedback"
+                    *ngIf="insuranceForm.get('codigoSeguro')?.hasError('required') && insuranceForm.get('codigoSeguro')?.touched">
+                    ¡Campo Obligatorio!.</div>
+            </div>
+
+            <!--SUMA ASEGURADA-->
+            <div class="col-12 col-md-6  rounded-pill mb-3">
+                <label class="text-capitalize my-1 fw-700">Suma Asegurada</label>
+                <input (input)="onInputValid($event,'sumaAsegurada')" [maxLength]="50" type="text" formControlName="sumaAsegurada" required class="form-control"
+                    placeholder="Suma Asegurada*" (keypress)="onKeyPressOnlyNumbers($event)"
+                    [ngClass]="{ 'is-invalid':  insuranceForm.get('sumaAsegurada')?.invalid && insuranceForm.get('sumaAsegurada')?.touched }">
+                <div class="invalid-feedback"
+                    *ngIf="insuranceForm.get('sumaAsegurada')?.hasError('required') && insuranceForm.get('sumaAsegurada')?.touched">
+                    ¡Campo
+                    Obligatorio!.</div>
+                <div class="invalid-feedback"
+                    *ngIf="insuranceForm.get('sumaAsegurada')?.hasError('pattern') && insuranceForm.get('sumaAsegurada')?.touched">
+                    ¡Solo se permite ingresar números!.</div>
+            </div>
+
+            <!--PRIMA-->
+            <div class="col-12 col-md-6  rounded-pill mb-3">
+                <label class="text-capitalize my-1 fw-700">Prima</label>
+                <input (input)="onInputValid($event,'prima')" [maxLength]="40" type="text" formControlName="prima" required class="form-control"
+                    placeholder="Prima*" (keypress)="onKeyPressOnlyNumbers($event)"
+                    [ngClass]="{ 'is-invalid':  insuranceForm.get('prima')?.invalid && insuranceForm.get('prima')?.touched }">
+                <div class="invalid-feedback"
+                    *ngIf="insuranceForm.get('prima')?.hasError('required') && insuranceForm.get('prima')?.touched">
+                    ¡Campo Obligatorio!.</div>
+                <div class="invalid-feedback"
+                    *ngIf="insuranceForm.get('prima')?.hasError('pattern') && insuranceForm.get('prima')?.touched">
+                    ¡Solo se permite ingresar números!.</div>
+            </div>
+        </div>
+    </div>
+</form>
