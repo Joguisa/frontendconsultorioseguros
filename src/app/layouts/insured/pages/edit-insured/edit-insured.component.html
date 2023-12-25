@@ -1,1 +1,38 @@
-<p>edit-insured works!</p>
+<app-loading *ngIf="isLoading"></app-loading>
+<div class="w-full h-full">
+    <app-header></app-header>
+    <div class="row  mx-4">
+        <div class="col-12 h-full">
+            <div class="d-flex justify-content-center align-items-center p-3 mt-5 w-full">
+                <div class="container alig-items-center my-2">
+                    <h1 class="text-center">Editar Asegurado</h1>
+                    <hr>
+                </div>
+            </div>
+            <form [formGroup]="insuredForm" autocomplete="off" *ngIf="!isLoading">
+                <div
+                    class="d-flex justify-content-center align-items-center col-12 col-md-12 mx-auto rounded-2  mt-1 mb-4">
+                    <select class="form-select" aria-label="Default select example" 
+                            formControlName="clienteId">
+                        <option [value]="insuredEdit.cliente?.clienteId ">{{ insuredEdit.cliente?.nombreCliente }}</option>
+                        <option *ngFor="let client of clients " [value]="client.clienteId "> {{ client.nombreCliente }} </option>
+                    </select>
+                </div>
+                <div
+                    class="d-flex justify-content-center align-items-center col-12 col-md-12 mx-auto rounded-2  mt-1 mb-4">
+                    <select class="form-select" aria-label="Default select example" 
+                            formControlName="seguroId">
+                        <option [value]="insuredEdit.seguro?.seguroId "> {{ insuredEdit.seguro?.nombreSeguro }} </option>
+                        <option *ngFor="let insurance of insurances" [value]="insurance.seguroId "> {{ insurance.nombreSeguro
+                            }} </option>
+                    </select>
+                </div>
+                <div class="d-flex justify-content-center align-items-center mt-2 mt-md-0">
+                    <button type="button" class="btn btn-formsCancel" (click)="goToListPage()">Cancelar</button>&nbsp;
+                    <button type="button" class="btn btn-formsPrimary" (click)="saveInsurance()">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>

@@ -8,6 +8,7 @@ import { EditInsuredComponent } from './pages/edit-insured/edit-insured.componen
 import { SharedModule } from 'src/app/shared/shared.module';
 
 
+
 @NgModule({
   declarations: [
     ListInsuredComponent,

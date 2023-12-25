@@ -1,1 +1,41 @@
-<p>list-insured works!</p>
+<app-loading *ngIf="isLoading"></app-loading>
+<div class="container w-full h-full" *ngIf="!isLoading">
+    <app-header></app-header>
+    <div class="d-flex flex-wrap justify-content-center align-content-between p-3 mt-5">
+        <div class="col-12">
+            <div class="container alig-items-center my-2">
+                <h1 class="text-center">Lista de Asegurados</h1>
+                <hr>
+            </div>
+            <div class="row">
+                <div class="d-flex justify-content-end align-items-end mt-2 mt-md-0">
+                    <button type="button" class="btn btn-primary" (click)="goToAddPage()">Agregar</button>&nbsp;
+                </div>
+            </div>
+            <table class=" table table-striped table-hover" aria-label="List of insurances">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Seguro</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let insured of insurers$ | async">
+                        <th scope="row">{{insured.aseguradoId}}</th>
+                        <td>{{insured.cliente.nombreCliente}}</td>
+                        <td>{{insured.seguro.nombreSeguro}}</td>
+                        <td>
+                            <i class="bi bi-pencil-square px-2 text-formsPrimary cursor-pointer"
+                                (click)="goToEditPage(insured.aseguradoId)"></i>
+                            <i class="bi bi-trash px-2 text-formsPrimary cursor-pointer"
+                                (click)="deleteInsured(insured.aseguradoId)"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>
