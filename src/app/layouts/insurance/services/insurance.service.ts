@@ -38,4 +38,16 @@ export class InsuranceService {
   deleteInsurance(id: number): Observable<GeneralResponse<InsuranceI>> {
     return this.http.delete<GeneralResponse<InsuranceI>>(`${this.apiUrl}seguros/${id}`);
   }
+
+  uploadFileEntity(file: File): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    return this.http.post<any>(`${this.apiUrl}seguros/TextImportSegurosAsync`, formData);
+  }
+
+  uploadFileADO(file: File): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    return this.http.post<any>(`${this.apiUrl}seguros/TextImportADO`, formData);
+  }
 }

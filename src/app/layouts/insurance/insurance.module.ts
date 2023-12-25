@@ -19,7 +19,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     InsuranceRoutingModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class InsuranceModule { }

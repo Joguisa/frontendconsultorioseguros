@@ -90,6 +90,7 @@ export class InsuranceFormComponent implements OnInit, OnChanges, OnDestroy{
           Validators.pattern("^[0-9]+$"),
         ],
       ],
+      File: [null]
     });
   }
 

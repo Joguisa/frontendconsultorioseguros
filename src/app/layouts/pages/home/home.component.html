@@ -1,6 +1,94 @@
 <div class="container">
     <app-header></app-header>
-    
+    <div class="d-flex flex-wrap justify-content-center align-content-between p-3 mt-5">
+        <div class="col-12">
+            <div class="container alig-items-center my-2">
+                <h1>Consultorio de Seguros</h1>
+                <hr>
+            </div>
+            <form [formGroup]="searchForm">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h3 class="card-title">Consultar cliente por su número de cédula con seguros asociados
+                                </h3>
+
+                                <div class="input-group mb-3">
+                                    <input type="text" formControlName="searchTerm" class="form-control"
+                                        placeholder="Buscar por Cédula" aria-label="Buscar por cédula" [maxLength]="10"
+                                        aria-describedby="btn-dni" (keypress)="onKeyPressOnlyNumbers($event)">
+                                    <button class="btn btn-primary" type="button" id="btn-dni"
+                                        (click)="getInsuredByCedula()" [disabled]="disabled">Buscar</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h3 class="card-title">Consultar seguros asociados a clientes por código de seguro</h3>
+                                <div class="input-group mb-3">
+                                    <input type="text" formControlName="searchCode" class="form-control" [maxLength]="10"
+                                        placeholder="Buscar por Código" aria-label="code" aria-describedby="btn-code">
+                                    <button class="btn btn-primary" type="button" id="btn-code"
+                                        (click)="getInsuredByCode()" [disabled]="disabled">Buscar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
     <br>
+    <div class="d-flex flex-wrap justify-content-center align-content-between">
+        <div class="col-6" *ngIf="cedula">
+            <div class="container alig-items-center my-2">
+                <h1 class="text-center"> {{ title }} </h1>
+                <hr>
+            </div>
+            <table class=" table table-striped table-hover" aria-label="List of insurances">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col">Cedula</th>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Seguro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let insured of client">
+                        <th scope="row">{{insured.cliente.cedula}}</th>
+                        <td>{{insured.cliente.nombreCliente}}</td>
+                        <td>{{insured.seguro.nombreSeguro}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6" *ngIf="codigo">
+            <div class="container alig-items-center my-2">
+                <h1 class="text-center"> {{ title }} </h1>
+                <hr>
+            </div>
+            <table class=" table table-striped table-hover" aria-label="List of insurances">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col">Código Seguro</th>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Seguro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let insured of seguro">
+                        <th scope="row">{{insured.seguro.codigoSeguro}}</th>
+                        <td>{{insured.cliente.nombreCliente}}</td>
+                        <td>{{insured.seguro.nombreSeguro}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
     <app-footer></app-footer>
 </div>

@@ -4,7 +4,7 @@
     <div class="d-flex flex-wrap justify-content-center align-content-between p-3 mt-5">
         <div class="col-12">
             <div class="container alig-items-center my-2">
-                <h1  class="text-center">Consultorio de Seguros</h1>
+                <h1  class="text-center">Lista de Clientes</h1>
                 <hr>
             </div>
             <div class="row">
@@ -25,7 +25,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let client of clients; let i = index">
+                    <tr *ngFor="let client of pagedClients; let i = index">
                         <th scope="row">{{client.clienteId}}</th>
                         <td>{{client.cedula}}</td>
                         <td>{{client.nombreCliente}}</td>
@@ -38,6 +38,13 @@
                     </tr>
                 </tbody>
             </table>
+            <div *ngIf="clients.length > itemsPerPage">
+                <ul class="pagination">
+                    <li class="page-item" *ngFor="let page of pages">
+                        <a class="page-link cursor-pointer" (click)="pageChanged(page)">{{ page }}</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
     <app-footer></app-footer>

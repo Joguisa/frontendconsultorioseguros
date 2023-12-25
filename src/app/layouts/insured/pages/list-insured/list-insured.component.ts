@@ -33,8 +33,6 @@ export class ListInsuredComponent {
     this.insuredService
       .getInsured().subscribe({
         next: (resp) => {
-          console.log(resp.data);
-          
           this.sharedDataService.setInsurers(resp.data);
           this.isLoading = false;
         },

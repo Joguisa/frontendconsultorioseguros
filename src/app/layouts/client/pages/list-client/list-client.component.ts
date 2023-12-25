@@ -12,8 +12,12 @@ import { Router } from '@angular/router';
 export class ListClientComponent implements OnInit {
 
   clients: ClientI[] = [];
-  currentPage: number = 1;
   isLoading: boolean = false;
+  pagedClients!: ClientI[];
+  itemsPerPage = 5; // Número de elementos por página
+  currentPage = 1; // Página actual
+  totalPages!: number;
+  pages: number[] = [];
 
   constructor(
     private router: Router,
@@ -32,8 +36,10 @@ export class ListClientComponent implements OnInit {
     this.isLoading = true;
     this.clientService.getClients().subscribe({
       next: (resp) => {
-        console.log(resp.data);
         this.clients = resp.data;
+        this.totalPages = Math.ceil(this.clients.length / this.itemsPerPage);
+        this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
+        this.updatePage();
         this.isLoading = false;
       },
       error: (err) => {
@@ -79,6 +85,18 @@ export class ListClientComponent implements OnInit {
    */
   saveListClient() {
     throw new Error('Method not implemented.');
+  }
+
+
+  updatePage(): void {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    this.pagedClients = this.clients.slice(startIndex, startIndex + this.itemsPerPage);
+  }
+
+  // Método para cambiar la página
+  pageChanged(event: any): void {
+    this.currentPage = event;
+    this.updatePage();
   }
 
 }

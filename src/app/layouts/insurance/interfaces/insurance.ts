@@ -36,4 +36,5 @@ export interface InsuranceFormI {
     prima:         number;
     fechaCreacion?: Date;
     estado?:        string;
+    File?:         File | null;
 }
