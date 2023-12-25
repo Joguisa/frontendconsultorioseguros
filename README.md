@@ -2,10 +2,58 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.0.
 
-## Development server
+## Instrucciones de Clonación y Ejecución
+Siga estos pasos para clonar y ejecutar el proyecto en su máquina local.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Prerrequisitos
+Asegúrese de tener instalados en su sistema:
+- Node.js (v14.x o superior)
+- npm (v7.x o superior)
 
+## Pasos
+1. **Clonar el Repositorio:**
+```
+  git clone https://github.com/joguisa/frontendconsultorioseguros.git
+```
+2. **Instalar Dependencias:**
+```
+cd frontendconsultorioseguros
+npm install
+```
+3. **Ejecute la aplicación:**
+```
+ng serve -o
+```
+# Dependencias
+## Dependencias de Producción
+- @angular/animations: ^15.0.0
+- @angular/cdk: ^15.2.9
+- @angular/common: ^15.0.0
+- @angular/compiler: ^15.0.0
+- @angular/core: ^15.0.0
+- @angular/forms: ^15.0.0
+- @angular/material: ^15.2.9
+- @angular/platform-browser: ^15.0.0
+- @angular/platform-browser-dynamic: ^15.0.0
+- @angular/router: ^15.0.0
+- ngx-toastr: ^16.2.0
+- rxjs: ~7.5.0
+- tslib: ^2.3.0
+- zone.js: ~0.12.0
+  
+  ## Dependencias de Desarrollo
+- @angular-devkit/build-angular: ^15.0.0
+- @angular/cli: ~15.0.0
+- @angular/compiler-cli: ^15.0.0
+- @types/jasmine: ~4.3.0
+- jasmine-core: ~4.5.0
+- karma: ~6.4.0
+- karma-chrome-launcher: ~3.1.0
+- karma-coverage: ~2.2.0
+- karma-jasmine: ~5.1.0
+- karma-jasmine-html-reporter: ~2.0.0
+- typescript: ~4.8.2
+- 
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
